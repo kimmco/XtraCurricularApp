@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.cokimutai.auth"
+    namespace = "com.core.ui"
     compileSdk = 34
 
     defaultConfig {
@@ -36,21 +36,14 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material3.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.material.compose)
+
+
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.bundles.compose)
-
-    implementation (libs.navigation.compose)
-    implementation (libs.one.tap.compose)
-    implementation (libs.message.bar.compose)
-    implementation (libs.firebase.auth)
-    implementation (libs.coroutines.core)
-    implementation (libs.realm.sync)
-
-    implementation(project(":core:ui"))
-    implementation(project(":common:utils"))
+    implementation(libs.material3.compose)
+    implementation(libs.compose.tooling.preview)
+    implementation(libs.realm.sync)
+    implementation(libs.coroutines.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)

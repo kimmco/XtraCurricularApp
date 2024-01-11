@@ -10,37 +10,36 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.cokimutai.e_extracurricularapp.navigation.setUpNavGraph
 import com.cokimutai.e_extracurricularapp.ui.theme.EExtraCurricularAppTheme
+import com.common.utils.Constants.APP_ID
+import com.common.utils.Screen
+import com.google.firebase.FirebaseApp
+import io.realm.kotlin.mongodb.App
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this)
         setContent {
             EExtraCurricularAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                val navController = rememberNavController()
+                setUpNavGraph(
+                    startDestination = getStartDestination() ,
+                    navController = navController,
+                    onDataLoaded = {
+
+                    }
+                )
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EExtraCurricularAppTheme {
-        Greeting("Android")
-    }
+private fun getStartDestination(): String {
+    val user = App.create(APP_ID).currentUser
+    //return if (user != null && user.loggedIn) Screen.Home.route
+    return if (user == null ) Screen.Home.route
+    else Screen.Authentication.route
 }

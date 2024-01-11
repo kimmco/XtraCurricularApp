@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android.kotlin)
-    kotlin("kapt")
+    alias(libs.plugins.android.ksp)
+
+  //  kotlin("kapt")
 }
 
 android {
@@ -52,11 +54,36 @@ android {
 
 dependencies {
 
+    implementation(project(":common:auth"))
+    implementation(project(":common:utils"))
+    implementation(project(":feature:kmf:feature:home"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+
+    // Compose Navigation
+    implementation(libs.navigation.compose)
+
+    // Firebase
+    implementation(libs.firebase.storage)
+
+    // Room components
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+
+    // Splash API
+    implementation(libs.splash.api)
+
+    // Mongo DB Realm
+    implementation(libs.realm.sync)
+
+    // Dagger Hilt
+    implementation(libs.hilt.android)
+    ksp (libs.hilt.compiler)
 
     testImplementation(libs.junit)
 

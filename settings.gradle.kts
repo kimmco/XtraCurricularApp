@@ -16,3 +16,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "E-Extra Curricular App"
 include(":app")
+include(":core:ui")
+include(":feature:kmf:feature:home")
+include(":common:auth")
+include(":feature:athletics:data")
+include(":common:utils")

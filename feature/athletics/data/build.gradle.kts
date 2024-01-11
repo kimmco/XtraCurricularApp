@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.feature.athletics"
+    namespace = "com.cokimutai.data"
     compileSdk = 34
 
     defaultConfig {
@@ -36,8 +36,8 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.compose.material3)
+    implementation(libs.material3.compose)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.espresso.core)
 }

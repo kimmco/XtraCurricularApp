@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.android.kotlin)
+    alias(libs.plugins.android.ksp)
 }
 
 android {
-    namespace = "com.cokimutai.auth"
+    namespace = "com.cokimutai.home"
     compileSdk = 34
 
     defaultConfig {
@@ -33,24 +34,25 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":common:utils"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material3.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.bundles.compose)
+
 
     implementation (libs.navigation.compose)
-    implementation (libs.one.tap.compose)
-    implementation (libs.message.bar.compose)
-    implementation (libs.firebase.auth)
     implementation (libs.coroutines.core)
     implementation (libs.realm.sync)
+    implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
+    implementation (libs.hilt.navigation.compose)
+    implementation (libs.compose.tooling.preview)
 
-    implementation(project(":core:ui"))
-    implementation(project(":common:utils"))
+    implementation (libs.firebase.auth)
+    implementation (libs.firebase.storage)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)

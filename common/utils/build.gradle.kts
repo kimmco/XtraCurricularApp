@@ -1,10 +1,11 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.android.kotlin)
 }
 
 android {
-    namespace = "com.cokimutai.auth"
+    namespace = "com.common.utils"
     compileSdk = 34
 
     defaultConfig {
@@ -24,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
 }
 
@@ -36,22 +37,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material3.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.bundles.compose)
-
-    implementation (libs.navigation.compose)
-    implementation (libs.one.tap.compose)
-    implementation (libs.message.bar.compose)
-    implementation (libs.firebase.auth)
-    implementation (libs.coroutines.core)
-    implementation (libs.realm.sync)
-
-    implementation(project(":core:ui"))
-    implementation(project(":common:utils"))
-
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
